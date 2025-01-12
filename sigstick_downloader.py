@@ -2,8 +2,8 @@ import os
 import urllib.request, urllib.parse
 from bs4 import BeautifulSoup as bs
 
-# url = input('Enter URL: ')
-url = "https://www.sigstick.com/pack/vSLNeemOBn9dEADQi1Z5"
+url = input('Enter URL: ')
+folderName = input('Enter folder name: ')
 
 response = urllib.request.urlopen(url)
 webContent = response.read().decode('UTF-8')
@@ -23,8 +23,8 @@ index1 = urlList[0]
 index1 = index1.replace('https://imgcdn.sigstick.com/', "")
 index1 = index1.replace('/0.webp', "")
 
-os.mkdir(index1)
+os.mkdir(folderName)
 for line in urlList:
     if index1 in line:
         a = line.replace("https://imgcdn.sigstick.com/" + index1 + "/", "")
-        urllib.request.urlretrieve(line, index1 + "/" + a)
+        urllib.request.urlretrieve(line, folderName + "/" + a)
